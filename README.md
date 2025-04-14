@@ -1,19 +1,40 @@
-# Team: Ladybugs & Co. 
+<p align="center">
+  <img src="./MONOLOAN_white.svg" alt="MonoLoan Logo" width="300" style="margin-bottom: -20px;"/>
+</p>
 
-## Project name: MonoLoan
+<h1 align="center" style="margin-top: 0;">MonoLoan</h1>
 
-This is the full-stack implementation of the **Ladybugs & Co. MonoLoan App**, built for **SwissHacks 2025**. The project consists of a **React + TypeScript frontend** and a **Node.js + Python backend**. It offers credit analysis and loan management based on blockchain wallet data.
+<p align="center">
+  <strong>Team: LadyBugs & Co. | Built for SwissHacks 2025 🚀</strong>
+</p>
+
+## 💡 Project Overview
+
+**MonoLoan** is a decentralized loan and credit analysis platform built for blockchain users. It allows individuals to request loans based on their XRP wallet data.
+
+
+The project consists of a **React + TypeScript frontend** and a **Node.js + Python backend**. 
 
 ---
 
-## warning: it is not all info on what we did! 
+> ⚠️ Warning: this is not all info on what we did!
 
-## 🌐 Frontend
+> 🔐 React + TypeScript frontend | Node.js + Python backend | Supabase Auth | XRP Ledger integration
 
-Built using React (Vite) + TypeScript with TailwindCSS.
+### 📸 UI Screenshots Examples
+
+#### 💼 Dashboard  
+The Dashboard shows the user's RLUSD and XRP wallet balances along with recent transactions. 
+
+![Dashboard](./dashboard.png)
+
+#### 📝 Request a Loan  
+Users select loan type, wallet, amount, and country, then submit a request after agreeing to terms.
+
+![Request a Loan](./request.png)
 
 ```
-### 🛠️ Run Frontend
+### Run Frontend
 
 ```bash
 cd frontend
@@ -24,7 +45,7 @@ npm run dev
 ### 🔐 Auth & Wallet
 
 - Uses **Supabase** for user authentication
-- Wallet integration via `WalletConnect.tsx`
+- XRP Wallet support via `WalletConnect.tsx`
 
 ---
 
@@ -36,14 +57,22 @@ Node.js API with Python-based blockchain analysis.
 
 ```bash
 backend/
-├── analyze_wallet.py             # Python script to process wallet data
-├── ledger_objects.csv            # Input CSVs for testing
-├── nfts.csv
-├── token_balances.csv
-├── xrp_transactions.csv
+├── analyze_wallet.py             # Python script for wallet analysis
+├── asset_risk.py                 # Risk evaluation logic
+├── fetch_wallet_data.py         # Pulls data from XRP Ledger
+├── create_trustline.js          # Trustline management
+├── send_rlusd.js                # RLUSD transaction handling
+├── ledger_objects.csv           # Wallet ledger snapshot
+├── token_balances.csv           # Wallet token data
+├── nfts.csv                     # NFT data
+├── xrp_transactions.csv         # Transaction history
 ├── src/
-│   └── routes/
-│       └── pythonRoutes.js       # Express route that runs the Python script
+│   ├── routes/
+│   │   └── pythonRoutes.js       # Express route triggering Python scripts
+│   ├── app.js
+│   ├── app.py
+│   └── server.js                # Node.js entry point
+
 ```
 
 ### 🛠️ Run Backend
@@ -57,38 +86,43 @@ node src/server.js
 ```bash
 example
 
-python analyze_wallet.py
+python analyze_wallet.py (address)
 ```
 
 ### 🧪 API Endpoint (examples)
-- GET /api/balance/:wallet
-  
-Fetch live XRP balance & trust lines from XRP Ledger
+| Endpoint | Description |
+|----------|-------------|
+| `GET /api/balance/:wallet` | Get XRP balance & trust lines |
+| `GET /api/report/:wallet` | Fetch wallet data |
+| `GET /api/analyze` | Analyze wallet data (credit score) |
+| `GET /api/python/analyze` | Direct Python-based scoring |
 
-- GET /api/report/:wallet
+---
 
-Pull wallet data from XRP Ledger and save to CSVs
+### 🌍 Frontend API Usage (examples)
 
-- GET /api/analyze
+| Endpoint | Purpose |
+|----------|---------|
+| `POST /auth/signup` | Register a user via Supabase |
+| `POST /auth/signin` | Login existing user |
+| WalletConnect | Enables on-chain wallet integration |
 
-Run credit score analysis based on saved CSVs
+---
 
-- GET /api/python/analyze
+## ✨ Features
 
-Run Python script manually to return wallet analysis results
+- 🔍 Blockchain-based wallet credit analysis  
+- 🪙 Real-time RLUSD + XRP wallet interaction  
+- 🧾 Collateralized loan request flow  
+- ⚡ Fast, modular React + Vite frontend  
+- 🔐 Secure login with Supabase + WalletConnect  
+- 📈 Python-backed analysis and CSV processing  
+- 🎯 Hackathon-ready, extendable architecture  
 
-### Frontend (Client-side) (examples)
-- POST /auth/signup – Register user (Supabase)
+---
 
-- POST /auth/signin – Sign in user
+## 🧠 Team
 
-WalletConnect handles on-chain wallet connection
-
-
-##  Features
-- Analyze wallet data and provide credit scores
-- Request and manage loans
-- Real-time interaction between frontend and backend
-- Modular and scalable architecture
-
+**Ladybugs & Co.**  
+Built for [SwissHacks 2025](https://swisshacks.ch)
 
