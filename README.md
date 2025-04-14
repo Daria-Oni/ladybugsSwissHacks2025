@@ -124,5 +124,5 @@ python analyze_wallet.py (address)
 ## 🧠 Team
 
 **Ladybugs & Co.**  
-Built for [SwissHacks 2025](https://swisshacks.ch)
+Built for [SwissHacks 2025](https://www.swisshacks.com/)
 
